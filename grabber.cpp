@@ -59,3 +59,12 @@ U32 CGrabber::sample(int x, int y)
   
 	return pixel;
 }
+
+void CGrabber::getMousePos(int &x, int &y) {
+	Window root, child;
+	int rootX, rootY, winX, winY;
+	unsigned int mask;
+	XQueryPointer(m_dpy, DefaultRootWindow(m_dpy), &root, &child, &rootX, &rootY, &winX, &winY, &mask);
+	x = rootX;
+	y = rootY;
+}

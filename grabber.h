@@ -16,6 +16,7 @@ public:
 
 	// returns 0xRRGGBB
 	U32 sample(int x, int y);
+	void getMousePos(int &x, int &y);
 
 private:
 	void              getRootAttrs();

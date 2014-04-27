@@ -1,6 +1,6 @@
-screen-grab
+cpick
 ===========
 
-Utility functions for grabbing the screen and moving the mouse (automation) on Linux, for eventual use in [Jimbly's VeggieTales](http://www.bigscreensmallgames.com/VeggieTales/) (Windows automation tool)
+Sample the color under the mouse and display the RGB value in the console.
 
 Some code initially gleaned from [boblight](https://code.google.com/p/boblight/).

@@ -18,6 +18,10 @@ public:
 	U32 sample(int x, int y);
 	void getMousePos(int &x, int &y);
 
+
+	// A full list of available codes can be found in /usr/include/X11/keysymdef.h, e.g. XK_a
+	void sendKey(unsigned int keysym);
+
 private:
 	void              getRootAttrs();
 

@@ -1,1 +1,1 @@
-g++ *.cpp -lX11 -lGL -o grabber.out
+g++ *.cpp -lX11 -lXtst -lGL -o grabber.out -Wall

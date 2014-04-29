@@ -10,6 +10,14 @@
       <Platform>Win32</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="grabber.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="window_with_name.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="grabber.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{696C5303-2AF9-4394-AE3D-7A01B8EE85F4}</ProjectGuid>
     <Keyword>MakeFileProj</Keyword>
@@ -41,9 +49,6 @@
   </PropertyGroup>
   <ItemDefinitionGroup>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <None Include="readme.txt" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

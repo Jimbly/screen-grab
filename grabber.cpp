@@ -1,7 +1,9 @@
 #include "grabber.h"
 
 #include <X11/Xutil.h>
+#include <X11/extensions/XTest.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 using namespace std;
 
@@ -42,17 +44,13 @@ void CGrabber::getRootAttrs() //update size of root window
 
 U32 CGrabber::sample(int x, int y)
 {
-	XImage* xim;
-	unsigned long pixel;
-	int rgb[3];
-
-    getRootAttrs();
+	getRootAttrs();
 
 	//get an image of size 1x1 at the location
-	xim = XGetImage(m_dpy, m_rootwin, x, y, 1, 1, AllPlanes, ZPixmap);
+	XImage* xim = XGetImage(m_dpy, m_rootwin, x, y, 1, 1, AllPlanes, ZPixmap);
 
 	//read out pixel
-	pixel = XGetPixel(xim, 0, 0);
+	unsigned long pixel = XGetPixel(xim, 0, 0);
 	XDestroyImage(xim);
 
 	m_error.clear();
@@ -67,4 +65,17 @@ void CGrabber::getMousePos(int &x, int &y) {
 	XQueryPointer(m_dpy, DefaultRootWindow(m_dpy), &root, &child, &rootX, &rootY, &winX, &winY, &mask);
 	x = rootX;
 	y = rootY;
+}
+
+void CGrabber::sendKey(unsigned int keysym) {
+	// The key code to be sent.
+
+	// Send a fake key press event to the window.
+	unsigned int keycode     = XKeysymToKeycode(m_dpy, keysym);
+	XTestFakeKeyEvent(m_dpy, keycode, True, CurrentTime);
+
+	usleep(100000);
+	// Send a fake key release event to the window.
+	XTestFakeKeyEvent(m_dpy, keycode, False, CurrentTime);
+	XFlush(m_dpy);
 }
